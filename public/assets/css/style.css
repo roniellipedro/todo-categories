@@ -30,6 +30,10 @@ body {
     background-color: var(--color-primary);
 }
 
+.sidebar img {
+    max-width: 100%;
+}
+
 nav {
     height: 100px;
     background-color: var(--color-light);
@@ -68,7 +72,11 @@ section.graph {
 .graph-header {
     display: flex;
     align-items: center;
-    gap: 10px
+    gap: 20px
+}
+
+.graph-header h2 {
+    font-size: 18px;
 }
 
 .hr-graph {
@@ -80,17 +88,25 @@ section.graph {
     margin-top: 10px;
 }
 
+
 .graph-placeholder {
-    background-color: #CCC;
+    /* background-color: #CCC; */
     width: 300px;
     height: 300px;
-    margin-top: 20px;
+    margin-top: 50px;
     margin-left: 40px;
+    background: url('/assets/images/graph.png');
+    background-size: contain;
 }
 
-.graph-header-tasks-left {
-    text-align: center;
-    margin-top: 10px;
+
+
+.tasks-left-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
 }
 
 .list-header {
@@ -99,4 +115,60 @@ section.graph {
 
 .list {
     padding: 10px;
+    flex: 1;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.task {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 15px;
+    border-bottom: 1px solid var(--color-light);
+}
+
+.task:hover {
+    background-color: var(--color-light);
+
+}
+
+.title {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.priority,
+.actions {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.actions {
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+}
+
+.sphere {
+    width: 22px;
+    height: 22px;
+    background-color: rgb(255, 217, 0);
+    border-radius: 100%;
+    margin-right: 10px;
+}
+
+.task-title {
+    padding-left: 10px;
+    font-weight: bold;
 }
