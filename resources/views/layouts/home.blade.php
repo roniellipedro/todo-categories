@@ -30,7 +30,9 @@
                         <h2>Progresso do Dia</h2>
                         <div class="hr-graph"></div>
                         <div class="graph-header-date">
-                            Data
+                            <img src="assets/images/icon-prev.png">
+                            13 de Dez
+                            <img src="assets/images/icon-next.png">
                         </div>
                     </div>
                     <div class="graph-header-subtitle">
@@ -70,19 +72,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="task">
-                            <div class="title">
-                                <input type="checkbox">
-                                <div class="task-title">Titulo da Tarefa</div>
-                            </div>
-                            <div class="priority">
-                                <div class="sphere"></div>
-                                <div>Titulo da Tarefa</div>
-                            </div>
-                            <div class="actions">
-                                Editar - Excluir
-                            </div>
-                        </div>
+
                     </div>
                 </section>
             </main>
