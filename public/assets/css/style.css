@@ -200,3 +200,30 @@ section.graph {
     padding-left: 10px;
     font-weight: bold;
 }
+
+#create-task-section {
+    margin: auto;
+}
+
+.input-area>label {
+    display: block;
+    margin-top: 20px;
+}
+
+.input-area>input,
+.input-area>select {
+    width: 400px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+.input-area>textarea {
+    width: 400px;
+    height: 120px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+
+}
