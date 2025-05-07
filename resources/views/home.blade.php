@@ -1,10 +1,12 @@
 <x-layout>
 
     <x-slot:btn>
-        <a href="#" class="btn btn-primary">
+        <a href="{{ route('task.create') }}" class="btn btn-primary">
             Criar Tarefa
         </a>
     </x-slot:btn>
+
+
 
     <section class="graph">
         <div class="graph-header">
@@ -36,11 +38,17 @@
         </div>
         <div class="task-list">
 
+            @php
+                $tasks = [
+                    ['id' => 1, 'done' => false, 'title' => 'Minha primeira tarefa', 'category' => 'Categoria 1'],
+                    ['id' => 2, 'done' => true, 'title' => 'Minha segunda tarefa', 'category' => 'Categoria 2'],
+                    ['id' => 3, 'done' => false, 'title' => 'Minha terceira tarefa', 'category' => 'Categoria 1'],
+                ];
+            @endphp
 
-            <x-task done="checked" title="Titulo 1" priority="Prioridade 1" />
-            <x-task title="Titulo 2" priority="Prioridade 2" />
-            <x-task done="checked" title="Titulo 3" priority="Prioridade 3" />
-            <x-task title="Titulo 4" priority="Prioridade 4" />
+            <x-task :data=$tasks[0] />
+            <x-task :data=$tasks[1] />
+            <x-task :data=$tasks[2] />
 
 
 
