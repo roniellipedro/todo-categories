@@ -49,6 +49,8 @@ nav {
     padding: 20px 30px;
     border-radius: 10px;
     transition: all .3s ease-in-out;
+    border: none;
+    cursor: pointer;
 }
 
 .btn:hover {
