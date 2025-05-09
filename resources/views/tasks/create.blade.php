@@ -6,23 +6,20 @@
     </x-slot:btn>
     <section id="create-task-section">
         <h1>Criar Tarefa</h1>
-        <form>
+        <form class="form-area">
 
-            <x-form.input name="title" type="text" label="Titulo da Task" placeholder="Digite o titulo da tarefa" />
+            <x-form.text-input name="title" label="Titulo da Task" placeholder="Digite o titulo da tarefa" />
 
-            <x-form.input name="due_date" type="date" label="Data da realização" />
+            <x-form.date-input name="due_date" label="Data da realização" />
 
-            <x-form.input name="category" type="select" label="Categoria">
+            <x-form.select-input name="category" label="Categoria">
                 <option value="">EXEMPLO</option>
-            </x-form.input>
+            </x-form.select-input>
 
-            <x-form.input name="description" type="textarea" label="Descrição da tarefa"
+            <x-form.textarea name="description" type="textarea" label="Descrição da tarefa"
                 placeholder="Digite uma descrição para sua tarefa" />
 
-            <div class="input-area">
-                <x-form.reset-input value="Resetar Tarefa" />
-                <x-form.submit-input value="Criar Tarefa" />
-            </div>
+            <x-form.button-input resetTxt="Resetar Tarefa" submitTxt="Criar Tarefa" />
 
         </form>
     </section>
