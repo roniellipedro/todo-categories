@@ -203,11 +203,11 @@ section.graph {
     font-weight: bold;
 }
 
-#create-task-section {
+#task-section {
     margin: auto;
 }
 
-#create-task-section>h1 {
+#task-section>h1 {
     text-align: center;
     margin-bottom: 20px;
 }

@@ -4,4 +4,26 @@
             Voltar
         </a>
     </x-slot:btn>
+
+    <section id="task-section">
+        <h1>Editar Tarefa</h1>
+        <form class="form-area" method="POST" action="{{ route('task.edit_action') }}">
+            @csrf
+            <x-form.text-input name="title" label="Titulo da Task" placeholder="Digite o titulo da tarefa" />
+
+            <x-form.date-input name="due_date" label="Data da realização" />
+
+            <x-form.select-input name="category_id" label="Categoria">
+                @foreach ($categories as $category)
+                    <option id="{{ $category->id }}" value="{{ $category->id }}">{{ $category->title }}</option>
+                @endforeach
+            </x-form.select-input>
+
+            <x-form.textarea name="description" type="textarea" label="Descrição da tarefa"
+                placeholder="Digite uma descrição para sua tarefa" />
+
+            <x-form.button-input resetTxt="Resetar Tarefa" submitTxt="Criar Tarefa" />
+
+        </form>
+    </section>
 </x-layout>
