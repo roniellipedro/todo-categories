@@ -3,5 +3,5 @@
         {{ $label ?? '' }}
     </label>
     <input name="{{ $name }}" id="{{ $name }}" type="text" placeholder="{{ $placeholder ?? '' }}"
-        {{ $required ?? '' }}>
+        {{ $required ?? '' }} value="{{ $value ?? '' }}">
 </div>
