@@ -11,6 +11,7 @@
     --color-white: #F6F5FF;
     --color-dark: #0A0040;
     --color-primary: #6143FF;
+    --color-success: #43ff8b;
 }
 
 body {
@@ -238,4 +239,10 @@ section.graph {
     border-radius: 5px;
     border: 1px solid #ccc;
     resize: none;
+}
+
+.success_msg {
+    background-color: var(--color-success);
+    text-align: center;
+    padding: 20px;
 }

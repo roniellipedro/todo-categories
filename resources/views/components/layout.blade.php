@@ -10,7 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
+
     <link rel="stylesheet" href="/assets/css/style.css">
+
 </head>
 
 <body>
@@ -18,10 +20,19 @@
         <div class="sidebar">
             <img src="/assets/images/logo.png">
         </div>
+
+
         <div class="content">
+
             <nav>
                 {{ $btn ?? null }}
             </nav>
+            @if (session('success_msg'))
+                <div class="success_msg">
+                    {{ session('success_msg') }}
+                </div>
+            @endif
+
             <main>
                 {{ $slot }}
             </main>
