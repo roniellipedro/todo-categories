@@ -4,11 +4,11 @@
             Voltar
         </a>
     </x-slot:btn>
-    <section id="task-section">
+    <section id="section">
         <h1>Criar Tarefa</h1>
         <form class="form-area" method="POST" action="{{ route('task.create_action') }}">
             @csrf
-            <x-form.text-input name="title" label="Titulo da Task" placeholder="Digite o titulo da tarefa" />
+            <x-form.input type="text" name="title" label="Titulo da Task" placeholder="Digite o titulo da tarefa" />
 
             <x-form.date-input name="due_date" label="Data da realização" />
 

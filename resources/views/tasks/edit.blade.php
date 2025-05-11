@@ -7,14 +7,19 @@
     </x-slot:btn>
 
 
-    <section id="task-section">
-
-        <h1>Editar Tarefa</h1>
+    <section id="section">
         <form class="form-area" method="POST" action="{{ route('task.edit_action') }}">
             @csrf
+
+            <div class="checkbox-area">
+                <x-form.checkbox-input name="is_done" checked="{{ $task->is_done }}" />
+
+                <h1>{{ $task->title }}</h1>
+            </div>
+
             <input type="hidden" name="task_id" value="{{ $task->id }}">
 
-            <x-form.text-input name="title" label="Titulo da Task" placeholder="Digite o titulo da tarefa"
+            <x-form.input type="text" name="title" label="Titulo da Task" placeholder="Digite o titulo da tarefa"
                 value="{{ $task->title }}" />
 
             <x-form.date-input name="due_date" label="Data da realização" value="{{ $task->due_date }}" />

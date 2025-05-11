@@ -12,6 +12,7 @@
     --color-dark: #0A0040;
     --color-primary: #6143FF;
     --color-success: #43ff8b;
+    --color-error: #ff4343;
 }
 
 body {
@@ -75,7 +76,6 @@ main {
 section.graph {
     width: 25%;
     padding: 5px;
-    /* height: calc(100vh - 100px - 40px); */
 }
 
 .graph-header {
@@ -204,14 +204,15 @@ section.graph {
     font-weight: bold;
 }
 
-#task-section {
+#section {
     margin: auto;
 }
 
-#task-section>h1 {
+#section>h1 {
     text-align: center;
     margin-bottom: 20px;
 }
+
 
 .form-area {
     display: flex;
@@ -232,6 +233,20 @@ section.graph {
     border: 1px solid #ccc;
 }
 
+.checkbox-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.checkbox {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+
 .input-area>textarea {
     width: 400px;
     height: 120px;
@@ -243,6 +258,13 @@ section.graph {
 
 .success_msg {
     background-color: var(--color-success);
+    text-align: center;
+    padding: 20px;
+}
+
+.error_msg {
+    background-color: var(--color-error);
+    color: var(--color-white);
     text-align: center;
     padding: 20px;
 }

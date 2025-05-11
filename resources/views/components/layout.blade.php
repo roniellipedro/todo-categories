@@ -27,11 +27,32 @@
             <nav>
                 {{ $btn ?? null }}
             </nav>
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="error_msg">
+                        {{ $error }}
+                    </div>
+                @endforeach
+
+            @endif
+
             @if (session('success_msg'))
                 <div class="success_msg">
                     {{ session('success_msg') }}
                 </div>
             @endif
+
+            {{-- @if (session('success_msg'))
+                <div class="success_msg">
+                    {{ session('success_msg') }}
+                </div>
+            @elseif(session('error_msg'))
+                <div class="error_msg">
+                    {{ session('error_msg') }}
+                </div>
+            @endif --}}
+
+
 
             <main>
                 {{ $slot }}

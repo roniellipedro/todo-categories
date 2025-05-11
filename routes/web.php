@@ -16,4 +16,7 @@ Route::post('/task/edit_action', [TaskController::class, 'edit_action'])->name('
 Route::get('/task/delete', [TaskController::class, 'delete'])->name('task.delete');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'login_action'])->name('login_action');
+
 Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'register_action'])->name('register_action');

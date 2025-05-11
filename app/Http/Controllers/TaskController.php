@@ -45,9 +45,12 @@ class TaskController extends Controller
 
     public function edit_action(Request $request)
     {
+        // return $request->all();
         $request_data = $request->only('title', 'due date', 'category_id', 'description');
 
         $task = Task::find($request->task_id);
+
+        $request_data['is_done'] = $request->is_done ? 1 : 0;
 
         if (!$task) {
             return 'Erro de task não existente';
@@ -57,7 +60,7 @@ class TaskController extends Controller
 
         $task->save();
 
-        return redirect()->back()->with('success_msg', 'Tarefa atualizada com sucesso!');
+        return redirect(route('home'))->with('success_msg', 'Tarefa atualizada com sucesso!');
     }
 
     public function delete(Request $request)
