@@ -3,5 +3,5 @@
         {{ $label ?? '' }}
     </label>
     <input name="{{ $name }}" id="{{ $name }}" type="date" {{ $required ?? '' }}
-        value="{{ date('Y-m-d', strtotime($value)) ?? '' }}">
+        @if (!empty($value)) value="{{ date('Y-m-d', strtotime($value)) ?? '' }}" @endif>
 </div>

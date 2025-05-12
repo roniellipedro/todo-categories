@@ -5,33 +5,44 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
     public function login()
     {
+        if (Auth::check()) {
+            return redirect(route('home'));
+        }
+
         return view('login');
     }
 
     public function login_action(Request $request)
     {
+        // dd($request);
         $validator = $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:6'
         ]);
+
+
+        if (Auth::attempt($validator)) {
+            $request->session()->regenerate();
+            return redirect(route('home'));
+        }
     }
 
     public function register()
     {
+        if (Auth::check()) {
+            return redirect(route('home'));
+        }
         return view('register');
     }
 
     public function register_action(Request $request)
     {
-
-        // if ($request->password_confirmation !== $request->password) {
-        //     return redirect()->back()->with('error_msg', 'Senhas não se conferem!');
-        // }
 
         $request->validate([
             'name' => 'required',
@@ -40,13 +51,17 @@ class AuthController extends Controller
         ]);
 
 
-
         $user = $request->only('name', 'email', 'password');
 
-        $user['password'] = Hash::make('password');
-
-
         User::create($user);
+
         return redirect(route('login'))->with('success_msg', 'Usuário criado com sucesso!');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect(route('login'));
     }
 }

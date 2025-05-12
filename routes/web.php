@@ -20,3 +20,5 @@ Route::post('/login', [AuthController::class, 'login_action'])->name('login_acti
 
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'register_action'])->name('register_action');
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
