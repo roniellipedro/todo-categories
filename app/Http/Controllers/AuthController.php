@@ -31,6 +31,9 @@ class AuthController extends Controller
             $request->session()->regenerate();
             return redirect(route('home'));
         }
+
+
+        return redirect(route('login'))->with('error_msg', 'Login ou senha inválido!');
     }
 
     public function register()

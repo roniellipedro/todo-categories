@@ -33,7 +33,10 @@
                         {{ $error }}
                     </div>
                 @endforeach
-
+            @elseif (session('error_msg'))
+                <div class="error_msg">
+                    {{ session('error_msg') }}
+                </div>
             @endif
 
             @if (session('success_msg'))
@@ -41,17 +44,6 @@
                     {{ session('success_msg') }}
                 </div>
             @endif
-
-            {{-- @if (session('success_msg'))
-                <div class="success_msg">
-                    {{ session('success_msg') }}
-                </div>
-            @elseif(session('error_msg'))
-                <div class="error_msg">
-                    {{ session('error_msg') }}
-                </div>
-            @endif --}}
-
 
 
             <main>
