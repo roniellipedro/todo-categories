@@ -54,8 +54,8 @@
 <script>
     async function taskUpdate(element) {
         let status = element.checked;
-
         let taskId = element.dataset.id;
+        let url = "{{ route('task.update') }}";
 
         let rawResult = await fetch(url, {
             method: 'POST',
@@ -65,11 +65,15 @@
             },
             body: JSON.stringify({
                 status,
-                taskId
+                taskId,
+                _token: '{{ csrf_token() }}'
             })
         });
         result = await rawResult.json();
-        console.log(result);
+        if (!result.success) {
+            element.checked = !status
+        }
+
 
     }
 </script>
