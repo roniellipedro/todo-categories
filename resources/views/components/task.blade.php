@@ -1,4 +1,4 @@
-<div class="task">
+<div class="task {{ $data['is_done'] ? 'task_done' : 'task_pending ' }}">
     <div class="title">
         <input type="checkbox" @if ($data['is_done']) checked @endif onchange="taskUpdate(this)"
             data-id="{{ $data['id'] }}">
