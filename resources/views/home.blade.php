@@ -18,20 +18,25 @@
             <h2>Progresso do Dia {{ $AuthUser->name ?? '' }}</h2>
             <div class="hr-graph"></div>
             <div class="graph-header-date">
-                <img src="assets/images/icon-prev.png">
-                13 de Dez
-                <img src="assets/images/icon-next.png">
+
+                <a href="{{ route('home', ['date' => $date_prev_button]) }}">
+                    <img src="assets/images/icon-prev.png">
+                </a>
+                {{ $date_as_string }}
+                <a href="{{ route('home', ['date' => $date_next_button]) }}">
+                    <img src="assets/images/icon-next.png">
+                </a>
             </div>
         </div>
         <div class="graph-header-subtitle">
-            Tarefas: <b>3/6</b>
+            Tarefas: <b>{{ $tasks_count - $undone_tasks_count }}/{{ $tasks_count }}</b>
         </div>
         <div class="graph-placeholder">
         </div>
 
         <div class="tasks-left-footer">
             <img src="/assets/images/icon-info.png">
-            Restam 3 tarefas para serem realizadas
+            Restam {{ $undone_tasks_count }} tarefas para serem realizadas
         </div>
     </section>
 
@@ -69,6 +74,7 @@
                 _token: '{{ csrf_token() }}'
             })
         });
+
         result = await rawResult.json();
         if (!result.success) {
             element.checked = !status

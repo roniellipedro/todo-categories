@@ -8,11 +8,27 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::all()->take(5);
-        $AuthUser = Auth::user();
+        $filteredDate = $request->date;
 
-        return view('home', ['tasks' => $tasks, 'AuthUser' => $AuthUser]);
+        if ($request->date) {
+            $filteredDate = $request->date;
+        } else {
+            $filteredDate = date('Y-m-d');
+        }
+
+        $data['date_prev_button'] = '2025-05-13';
+        $data['date_as_string'] = '14 de Mai';
+        $data['date_next_button'] = '2025-05-15';
+
+        $data['tasks'] = Task::whereDate('due_date', $filteredDate)->get();
+
+        $data['AuthUser'] = Auth::user();
+
+        $data['tasks_count'] = $data['tasks']->count();
+        $data['undone_tasks_count'] = $data['tasks']->where('is_done', false)->count();
+
+        return view('home', $data);
     }
 }
