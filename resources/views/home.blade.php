@@ -15,7 +15,7 @@
     <section class="graph">
         <div class="graph-header">
 
-            <h2>Progresso do Dia {{ $AuthUser->name ?? '' }}</h2>
+            <h2>Progresso do Dia</h2>
             <div class="hr-graph"></div>
             <div class="graph-header-date">
 
