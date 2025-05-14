@@ -10,7 +10,7 @@
         <form class="form-area" method="POST" action="{{ route('login_action') }}">
             @csrf
 
-            <x-form.input type="email" name="email" label="Seu email" placeholder="Seu email" />
+            <x-form.input type="email" name="email" label="Seu email" placeholder="Seu email" value="{{ session('email') ?? ''}}"/>
 
             <x-form.input type="password" name="password" label="Sua senha" placeholder="Sua senha" />
 

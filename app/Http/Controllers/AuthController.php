@@ -20,20 +20,24 @@ class AuthController extends Controller
 
     public function login_action(Request $request)
     {
-        // dd($request);
+        
         $validator = $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:6'
         ]);
 
+    
 
         if (Auth::attempt($validator)) {
             $request->session()->regenerate();
             return redirect(route('home'));
         }
 
+        $email = $request->email;
 
-        return redirect(route('login'))->with('error_msg', 'E-mail ou senha inválido!');
+        return redirect(route('login'))
+        ->with('email', $email)
+        ->with('error_msg', 'E-mail ou senha inválido!');
     }
 
     public function register()
