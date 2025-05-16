@@ -29,15 +29,18 @@
             </div>
         </div>
         <div class="graph-header-subtitle">
-            Tarefas: <b>{{ $tasks_count - $undone_tasks_count }}/{{ $tasks_count }}</b>
+            Tarefas: <span class="done-tasks-count">{{ $tasks_count - $undone_tasks_count }}</span>/<span
+                class="tasks-count">{{ $tasks_count }}</span>
         </div>
         <div class="graph-placeholder">
         </div>
 
         <div class="tasks-left-footer">
             <img src="/assets/images/icon-info.png">
-            Restam {{ $undone_tasks_count }} tarefas para serem realizadas
+            Restam <span class="undone-tasks-count"> {{ $undone_tasks_count }} </span>
+            tarefas para serem realizadas
         </div>
+
     </section>
 
     <section class="list">
@@ -63,24 +66,33 @@
 
         let value = element.value;
 
-        document.querySelectorAll('.task').forEach(function(element) {
-            element.style.display = 'flex';
-        })
+        if (value == 'task_all') {
+            taskAll();
+        }
 
         if (value == 'task_pending') {
+            taskAll();
+
             document.querySelectorAll('.task_done').forEach(function(element) {
                 element.style.display = 'none';
-            })
+            });
+
         }
 
         if (value == 'task_done') {
+            taskAll();
+
             document.querySelectorAll('.task_pending').forEach(function(element) {
                 element.style.display = 'none';
-            })
+            });
+
         }
 
-
-
+        function taskAll() {
+            document.querySelectorAll('.task').forEach(function(element) {
+                element.style.display = 'flex';
+            });
+        }
 
     }
 </script>
@@ -90,6 +102,38 @@
         let status = element.checked;
         let taskId = element.dataset.id;
         let url = "{{ route('task.update') }}";
+        let undoneTasksCount = parseInt(document.querySelector('.undone-tasks-count').innerHTML);
+        let doneTasksCount = parseInt(document.querySelector('.done-tasks-count').innerHTML);
+
+        let listHeaderSelect = document.querySelector('.list-header-select').value;
+
+
+        if (status) {
+            // if (listHeaderSelect == 'task_pending') {
+            //     document.querySelectorAll('.task_done').forEach(function(element) {
+            //         element.style.backgroundColor = 'red';
+            //     });
+            // }
+
+
+
+
+            // document.querySelector('#checkbox').addEventListener('change', function() {
+
+            //     const pai = this.closest('.task');
+
+            //     pai.classList.add('ativo');
+
+            //     alert('opa');
+            // });
+
+            document.querySelector('.done-tasks-count').innerHTML = (doneTasksCount + 1);
+            document.querySelector('.undone-tasks-count').innerHTML = (undoneTasksCount - 1);
+
+        } else {
+            document.querySelector('.done-tasks-count').innerHTML = (doneTasksCount - 1);
+            document.querySelector('.undone-tasks-count').innerHTML = (undoneTasksCount + 1);
+        }
 
         let rawResult = await fetch(url, {
             method: 'POST',
@@ -108,7 +152,6 @@
         if (!result.success) {
             element.checked = !status
         }
-
 
     }
 </script>
