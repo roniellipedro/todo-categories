@@ -234,7 +234,7 @@ section.graph {
     border: 1px solid #ccc;
 }
 
-.checkbox-area {
+.checkbox-edit-area {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -242,7 +242,7 @@ section.graph {
     gap: 20px;
 }
 
-.checkbox {
+.checkbox-edit {
     width: 20px !important;
     height: 20px !important;
 }

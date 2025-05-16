@@ -66,6 +66,10 @@
 
         let value = element.value;
 
+        //task_all
+        //task_pending
+        //task_done
+
         if (value == 'task_all') {
             taskAll();
         }
@@ -98,6 +102,35 @@
 </script>
 
 <script>
+    // const listHeaderSelect = document.querySelector('.list-header-select').value;
+    // alert(listHeaderSelect);
+    // const checkboxes = document.querySelectorAll('.checkbox');
+
+    // checkboxes.forEach(checkbox => {
+    //     const task = checkbox.closest('.task');
+
+    //     // if (checkbox.checked) {
+    //     //     task.style.backgroundColor = 'red';
+    //     // } else {
+    //     //     task.style.backgroundColor = 'blue';
+    //     // }
+
+    //     checkbox.addEventListener('change', function() {
+    //         if (this.checked) {
+
+    //             alert(listHeaderSelect);
+    //             // task.classList.replace('task_pending', 'task_done');
+    //             task.style.backgroundColor = 'blue';
+
+    //         } else {
+    //             task.style.backgroundColor = 'red';
+
+    //         }
+    //     });
+    // });
+</script>
+
+<script>
     async function taskUpdate(element) {
         let status = element.checked;
         let taskId = element.dataset.id;
@@ -107,30 +140,33 @@
 
         let listHeaderSelect = document.querySelector('.list-header-select').value;
 
+        const task = element.closest('.task');
 
         if (status) {
-            // if (listHeaderSelect == 'task_pending') {
-            //     document.querySelectorAll('.task_done').forEach(function(element) {
-            //         element.style.backgroundColor = 'red';
-            //     });
-            // }
-
-
-
-
-            // document.querySelector('#checkbox').addEventListener('change', function() {
-
-            //     const pai = this.closest('.task');
-
-            //     pai.classList.add('ativo');
-
-            //     alert('opa');
-            // });
-
             document.querySelector('.done-tasks-count').innerHTML = (doneTasksCount + 1);
             document.querySelector('.undone-tasks-count').innerHTML = (undoneTasksCount - 1);
 
+            if (listHeaderSelect == 'task_pending') {
+                task.classList.replace('task_pending', 'task_done');
+                task.style.display = 'none';
+            }
+
+            if (listHeaderSelect == 'task_all') {
+                task.classList.replace('task_pending', 'task_done');
+            }
+
+
         } else {
+
+            if (listHeaderSelect == 'task_done') {
+                task.classList.replace('task_done', 'task_pending');
+                task.style.display = 'none';
+            }
+
+            if (listHeaderSelect == 'task_all') {
+                task.classList.replace('task_done', 'task_pending');
+            }
+
             document.querySelector('.done-tasks-count').innerHTML = (doneTasksCount - 1);
             document.querySelector('.undone-tasks-count').innerHTML = (undoneTasksCount + 1);
         }

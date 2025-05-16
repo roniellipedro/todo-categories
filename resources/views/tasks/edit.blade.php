@@ -11,7 +11,7 @@
         <form class="form-area" method="POST" action="{{ route('task.edit_action') }}">
             @csrf
 
-            <div class="checkbox-area">
+            <div class="checkbox-edit-area">
                 <x-form.checkbox-input name="is_done" checked="{{ $task->is_done }}" />
 
                 <h1>{{ $task->title }}</h1>
