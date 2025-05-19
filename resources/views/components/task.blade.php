@@ -5,7 +5,7 @@
         <div class="task-title">{{ $data['title'] ?? null }} </div>
     </div>
     <div class="priority">
-        <div class="sphere"></div>
+        <div class="sphere" style="background-color: {{ $data['category']['color'] ?? rgb(266, 266, 266) }};"></div>
         <div>{{ $data['category']['title'] ?? null }}</div>
     </div>
     <div class="actions">
